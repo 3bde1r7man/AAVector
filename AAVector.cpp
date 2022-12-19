@@ -138,22 +138,21 @@ void AAVector<T>::erase(T* it1, T* it2)
 	auto start = min(it1, it2);
 	auto end = max(it1, it2);
 	T* newdata = new T[Capacity];
-	for (int i = 0; i < Size; i++)
-	{
-		for (int i = 0; i < Size; i++) {
-			if (&Data[i] >= start && &Data[i] <= end) {
-				newdata[i] = Data[i + (end - start) ];
-			}
-			else if(&Data[i] > end)
-			{
-				newdata[i] = Data[i + (end - start)];
-			}
-			else
-			{
-				newdata[i] = Data[i];
-			}
+	
+	for (int i = 0; i < Size; i++) {
+		if (&Data[i] >= start && &Data[i] <= end) {
+			newdata[i] = Data[i + (end - start) ];
+		}
+		else if(&Data[i] > end)
+		{
+			newdata[i] = Data[i + (end - start)];
+		}
+		else
+		{
+			newdata[i] = Data[i];
 		}
 	}
+	
 	Size -= (end - start);
 	delete[] Data;
 	Data = newdata;
