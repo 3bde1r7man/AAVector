@@ -9,7 +9,7 @@ AAVector<T>::AAVector(int n)
 }
 
 template<class T>
-AAVector<T>::AAVector(T* item, int n)
+AAVector<T>::AAVector(T item, int n)
 {
 	Capacity = n;
 	Size = n;
@@ -21,7 +21,19 @@ AAVector<T>::AAVector(T* item, int n)
 }
 
 template<class T>
-AAVector<T>::AAVector(const AAVector& v)
+AAVector<T>::AAVector(T* item, int n)
+{
+	Capacity = n;
+	Size = n;
+	Data = new T[Capacity];
+	for (int i = 0; i < Size; i++)
+	{
+		Data[i] = item[i];
+	}
+}
+
+template<class T>
+AAVector<T>::AAVector(const AAVector<T>& v)
 {
 	if (this != &v) {
 		delete[] Data;
@@ -38,7 +50,7 @@ AAVector<T>::~AAVector()
 }
 
 template<class T>
-AAVector<T>& AAVector<T>::operator=(const AAVector& v)
+AAVector<T>& AAVector<T>::operator=(const AAVector<T>& v)
 {
 	if (this != &v) {
 		delete[] Data;
@@ -50,7 +62,7 @@ AAVector<T>& AAVector<T>::operator=(const AAVector& v)
 }
 
 template<class T>
-AAVector<T>& AAVector<T>::operator=(const AAVector&& v) noexcept
+AAVector<T>& AAVector<T>::operator=(const AAVector<T>&& v) noexcept
 {
 	if (this != &v) {
 		delete[] Data;

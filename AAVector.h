@@ -18,11 +18,12 @@ public:
 	AAVector(int n = 2);		// Initialize by specific capacity
 	// No content is added, size = 0
 	// Assign a default size value
+	AAVector(T, int  n);		// Initialize by n items from array 
 	AAVector(T*, int  n);		// Initialize by n items from array 
-	AAVector(const AAVector&);	// Initialize with a copy
+	AAVector(const AAVector<T>&);	// Initialize with a copy
 	virtual ~AAVector();		// Delete allocated memory
-	AAVector& operator=(const AAVector& v);  // Copy assignment  
-	AAVector& operator=(const AAVector&& v) noexcept; // Move assignment 
+	AAVector& operator=(const AAVector<T>& v);  // Copy assignment  
+	AAVector& operator=(const AAVector<T>&& v) noexcept; // Move assignment 
 
 	// Access operations 
 	T& operator[](int); // Access item by reference 

@@ -3,15 +3,16 @@
 
 
 int main() {
-	AAVector<int> v;
-	v.push_back(2);
+	int a[6] = {1,2,3,4,5,6};
+	AAVector<int> v (a,3);
+	/*v.push_back(2);
 	v.push_back(3);
 	v.push_back(4);
 	v.push_back(5);
 	v.push_back(6);
 	v.push_back(8);
 	v.push_back(7);
-	v.push_back(3);
+	v.push_back(3);*/
 	v.insert(v.begin() + 2, 20);
 	cout << v;
 
