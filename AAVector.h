@@ -61,6 +61,6 @@ public:
 
 	// Friends
 	template <class C> 
-	friend ostream& operator<<(ostream& out, AAVector<C> other);
+	friend ostream& operator<<(ostream& out, AAVector<C>& other);
 };
 
