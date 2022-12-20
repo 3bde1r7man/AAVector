@@ -110,6 +110,7 @@ template<class T>
 void AAVector<T>::erase(const T* it)
 {
 	if (it >= &Data[0] && it <= &Data[Size - 1]) {
+
 		T* newdata = new T[Capacity];
 		for (int i = 0; i < Size; i++) {
 			if (&Data[i] <  it) {
@@ -138,25 +139,32 @@ void AAVector<T>::erase(T* it1, T* it2)
 	auto start = min(it1, it2);
 	auto end = max(it1, it2);
 	T* newdata = new T[Capacity];
-	
-	for (int i = 0; i < Size; i++) {
-		if (&Data[i] >= start && &Data[i] <= end) {
-			newdata[i] = Data[i + (end - start) ];
+	if (start >= &Data[0] && end <= &Data[Size - 1]) {
+		for (int i = 0; i < Size; i++) {
+			if (&Data[i] >= start && &Data[i] <= end) {
+				newdata[i] = Data[i + (end - start)];
+			}
+			else if (&Data[i] > end)
+			{
+				newdata[i] = Data[i + (end - start)];
+			}
+			else
+			{
+				newdata[i] = Data[i];
+			}
 		}
-		else if(&Data[i] > end)
-		{
-			newdata[i] = Data[i + (end - start)];
-		}
-		else
-		{
-			newdata[i] = Data[i];
-		}
+
+		Size -= (end - start);
+		delete[] Data;
+		Data = newdata;
+		newdata = nullptr;
+	}
+	else
+	{
+		cout << "out of range itreator\n";
 	}
 	
-	Size -= (end - start);
-	delete[] Data;
-	Data = newdata;
-	newdata = nullptr;
+	
 }
 
 template<class T>
@@ -174,7 +182,35 @@ void AAVector<T>::clear()
 template<class T>
 void AAVector<T>::insert(T* it, T item)
 {
-
+	if (it >= &Data[0] && it <= &Data[Size - 1]) {
+		if (Size >= Capacity) {
+			Capacity *= 2;
+		}
+		T* newdata = new T[Capacity];
+		for (int i = 0; i < Size+1; i++)
+		{
+			if (&Data[i] < it) {
+				newdata[i] = Data[i];
+			}
+			else if (&Data[i] == it)
+			{
+				newdata[i] = item;
+			}
+			else
+			{
+				newdata[i] = Data[i - 1];
+			}
+		}
+		delete[] Data;
+		Data = newdata;
+		newdata = nullptr;
+		Size++;
+		
+	}
+	else
+	{
+		cout << "out of range itreator\n";
+	}
 }
 
 template<class T>
@@ -249,11 +285,11 @@ bool AAVector<T>::empty()
 }
 
 template<class C>
-ostream& operator<<(ostream& out, AAVector<C> other)
+ostream& operator<<(ostream& out, AAVector<C>& other)
 {
 	for (int i = 0; i < other.Size; i++)
 	{
-		out << *other.Data[i] << ' ';
+		out << other.Data[i] << ' ';
 	}
 	return out;
 }
