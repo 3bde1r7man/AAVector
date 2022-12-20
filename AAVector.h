@@ -19,10 +19,10 @@ public:
 	// No content is added, size = 0
 	// Assign a default size value
 	AAVector(T*, int  n);		// Initialize by n items from array 
-	AAVector(const AAVector&);	// Initialize with a copy
+	AAVector(const AAVector<T>&);	// Initialize with a copy
 	virtual ~AAVector();		// Delete allocated memory
-	AAVector& operator=(const AAVector& v);  // Copy assignment  
-	AAVector& operator=(const AAVector&& v) noexcept; // Move assignment 
+	AAVector& operator=(const AAVector<T>& v);  // Copy assignment  
+	AAVector& operator=(const AAVector<T>&& v) noexcept; // Move assignment 
 
 	// Access operations 
 	T& operator[](int); // Access item by reference 
@@ -59,7 +59,8 @@ public:
 	void resize(const size_t);			// Relocate to bigger space
 	bool empty();			// Return true if size is 0
 
-	// Friends 
-	friend ostream& operator<<(ostream& out, AAVector<T> other);
+	// Friends
+	template<class C>
+	friend ostream& operator<<(ostream& out, AAVector<C>& other);
 };
 

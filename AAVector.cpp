@@ -21,7 +21,7 @@ AAVector<T>::AAVector(T* item, int n)
 }
 
 template<class T>
-AAVector<T>::AAVector(const AAVector& v)
+AAVector<T>::AAVector(const AAVector<T>& v)
 {
 	if (this != &v) {
 		delete[] Data;
@@ -38,7 +38,7 @@ AAVector<T>::~AAVector()
 }
 
 template<class T>
-AAVector<T>& AAVector<T>::operator=(const AAVector& v)
+AAVector<T>& AAVector<T>::operator=(const AAVector<T>& v)
 {
 	if (this != &v) {
 		delete[] Data;
@@ -50,7 +50,7 @@ AAVector<T>& AAVector<T>::operator=(const AAVector& v)
 }
 
 template<class T>
-AAVector<T>& AAVector<T>::operator=(const AAVector&& v) noexcept
+AAVector<T>& AAVector<T>::operator=(const AAVector<T>&& v) noexcept
 {
 	if (this != &v) {
 		delete[] Data;
@@ -95,6 +95,7 @@ template<class T>
 T AAVector<T>::pop_back()
 {
 	Size--;
+	T returnedValue = Data[Size-1];
 	T* newdata = new T[Capacity];
 	for (int i = 0; i < Size; i++) {
 		newdata[i] = Data[i];
@@ -103,7 +104,7 @@ T AAVector<T>::pop_back()
 	Data = newdata;
 	newdata = nullptr;
 
-	return Data[Size-1];
+	return returnedValue;
 }
 
 template<class T>
@@ -248,12 +249,12 @@ bool AAVector<T>::empty()
 	return false;
 }
 
-template<class T>
-ostream& operator<<(ostream& out, AAVector<T> other)
+template<class C>
+ostream& operator<<(ostream& out, AAVector<C>& other)
 {
 	for (int i = 0; i < other.Size; i++)
 	{
-		out << *other.Data[i] << ' ';
+		out << other.Data[i] << ' ';
 	}
 	return out;
 }
