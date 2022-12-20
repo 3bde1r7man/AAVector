@@ -248,8 +248,8 @@ bool AAVector<T>::empty()
 	return false;
 }
 
-template<class T>
-ostream& operator<<(ostream& out, AAVector<T> other)
+template<class C>
+ostream& operator<<(ostream& out, AAVector<C> other)
 {
 	for (int i = 0; i < other.Size; i++)
 	{

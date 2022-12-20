@@ -59,7 +59,8 @@ public:
 	void resize(const size_t);			// Relocate to bigger space
 	bool empty();			// Return true if size is 0
 
-	// Friends 
-	friend ostream& operator<<(ostream& out, AAVector<T> other);
+	// Friends
+	template <class C> 
+	friend ostream& operator<<(ostream& out, AAVector<C> other);
 };
 
