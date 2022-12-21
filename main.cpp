@@ -1,7 +1,17 @@
+/*****************************************************************//**
+ * \file   main.cpp
+ * \brief  this program is for creating a vector
+ * 
+ * \author Ahmed Hanfy & Abdelrhman Mostafa
+ * \date   December 2022
+ *********************************************************************/
 #include "AAVector.h"
 #include "AAVector.cpp"
 
-
+/**
+ * this is main function .
+ * 
+ */
 int main() {
 	int a[6] = {1,2,3,4,5,6};
 	AAVector<int> v (a,3);

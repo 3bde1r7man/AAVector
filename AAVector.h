@@ -1,3 +1,11 @@
+/*****************************************************************//**
+ * \file   AAVector.h
+ * \brief  this is the class overview
+ * 
+ * \author Ahmed Hanfy & Abdelrhman Mostafa
+ * \date   December 2022
+ *********************************************************************/
+
 #pragma once
 #include <iostream>
 #include <string>
