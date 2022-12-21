@@ -15,6 +15,8 @@
 int main() {
 	int a[6] = {1,2,3,4,5,6};
 	AAVector<int> v (a,3);
+	AAVector<int> v2(a, 3);
+	
 	/*v.push_back(2);
 	v.push_back(3);
 	v.push_back(4);
@@ -24,6 +26,7 @@ int main() {
 	v.push_back(7);
 	v.push_back(3);*/
 	v.insert(v.begin() + 2, 20);
+
 	cout << v;
 
 	/*for (int i = 0; i < v.size(); i++)

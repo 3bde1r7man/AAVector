@@ -8,7 +8,11 @@
 
 #include "AAVector.h"
 
-
+/**
+ * Initialize vector with Size n.
+ * 
+ * \param n
+ */
 template<class T>
 AAVector<T>::AAVector(int n)
 {
@@ -17,6 +21,13 @@ AAVector<T>::AAVector(int n)
 	Data = new T[Capacity];
 }
 
+
+/**
+ * Initialize vector with Size n & fill it with item
+ * 
+ * \param item
+ * \param n
+ */
 template<class T>
 AAVector<T>::AAVector(T item, int n)
 {
@@ -29,6 +40,12 @@ AAVector<T>::AAVector(T item, int n)
 	}
 }
 
+/**
+ * Initialize vector with Size n form another array
+ * 
+ * \param item
+ * \param n
+ */
 template<class T>
 AAVector<T>::AAVector(T* item, int n)
 {
@@ -41,6 +58,12 @@ AAVector<T>::AAVector(T* item, int n)
 	}
 }
 
+
+/**
+ * Initialize with a copy
+ * 
+ * \param v
+ */
 template<class T>
 AAVector<T>::AAVector(const AAVector<T>& v)
 {
@@ -52,12 +75,22 @@ AAVector<T>::AAVector(const AAVector<T>& v)
 	}
 }
 
+/**
+ * Delete allocated memory
+ * 
+ */
 template<class T>
 AAVector<T>::~AAVector()
 {
 	delete[] Data;
 }
 
+/**
+ * Copy assignment  
+ * 
+ * \param v
+ * \return 
+ */
 template<class T>
 AAVector<T>& AAVector<T>::operator=(const AAVector<T>& v)
 {
@@ -70,6 +103,12 @@ AAVector<T>& AAVector<T>::operator=(const AAVector<T>& v)
 	return *this;
 }
 
+/**
+ * Move assignment
+ * 
+ * \param v
+ * \return 
+ */
 template<class T>
 AAVector<T>& AAVector<T>::operator=(const AAVector<T>&& v) noexcept
 {
@@ -82,6 +121,12 @@ AAVector<T>& AAVector<T>::operator=(const AAVector<T>&& v) noexcept
 	return *this;
 }
 
+/**
+ * 
+ * 
+ * \param index
+ * \return the Date at specific index
+ */
 template<class T>
 T& AAVector<T>::operator[](int index)
 {
@@ -92,6 +137,11 @@ T& AAVector<T>::operator[](int index)
 	return Data[index];
 }
 
+/**
+ * add 1 item to the vector
+ * 
+ * \param thing
+ */
 template<class T>
 void AAVector<T>::push_back(T thing)
 {
@@ -112,6 +162,11 @@ void AAVector<T>::push_back(T thing)
 	}
 }
 
+/**
+ * Remove and return last element in vec 
+ * 
+ * \return 
+ */
 template<class T>
 T AAVector<T>::pop_back()
 {
@@ -127,6 +182,11 @@ T AAVector<T>::pop_back()
 	return Data[Size-1];
 }
 
+/**
+ * Remove item at iterator
+ * 
+ * \param it
+ */
 template<class T>
 void AAVector<T>::erase(const T* it)
 {
@@ -154,6 +214,12 @@ void AAVector<T>::erase(const T* it)
 	
 }
 
+/**
+ * Remove items between 2 iterators
+ * 
+ * \param it1
+ * \param it2
+ */
 template<class T>
 void AAVector<T>::erase(T* it1, T* it2)
 {
@@ -188,6 +254,10 @@ void AAVector<T>::erase(T* it1, T* it2)
 	
 }
 
+/**
+ * clear the vector
+ * 
+ */
 template<class T>
 void AAVector<T>::clear()
 {
@@ -200,6 +270,12 @@ void AAVector<T>::clear()
 
 }
 
+/**
+ * Insert item at iterator 
+ * 
+ * \param it
+ * \param item
+ */
 template<class T>
 void AAVector<T>::insert(T* it, T item)
 {
@@ -234,12 +310,22 @@ void AAVector<T>::insert(T* it, T item)
 	}
 }
 
+/**
+ * 
+ * 
+ * \return iterator 
+ */
 template<class T>
 T* AAVector<T>::begin()
 {
 	return &Data[0];
 }
 
+/**
+ *
+ *
+ * \return iterator
+ */
 template<class T>
 T* AAVector<T>::end()
 {
@@ -247,6 +333,12 @@ T* AAVector<T>::end()
 }
 
 
+/**
+ * Return true if ==  
+ * 
+ * \param other
+ * \return 
+ */
 template<class T>
 bool AAVector<T>::operator==(const AAVector<T>& other)
 {
@@ -259,6 +351,12 @@ bool AAVector<T>::operator==(const AAVector<T>& other)
 	return true;
 }
 
+/**
+ * Return true if first different item in this is < in other
+ * 
+ * \param other
+ * \return 
+ */
 template<class T>
 bool AAVector<T>::operator<(const AAVector<T>& other)
 {
@@ -271,18 +369,33 @@ bool AAVector<T>::operator<(const AAVector<T>& other)
 	return true;
 }
 
+/**
+ * 
+ * 
+ * \return Size
+ */
 template<class T>
 int AAVector<T>::size() const
 {
 	return Size;
 }
 
+/**
+ * .
+ * 
+ * \return Capacity
+ */
 template<class T>
 int AAVector<T>::capacity() const
 {
 	return Capacity;
 }
 
+/**
+ * resize the vector
+ * 
+ * \param size
+ */
 template<class T>
 void AAVector<T>::resize(const size_t size)
 {
@@ -296,6 +409,11 @@ void AAVector<T>::resize(const size_t size)
 	newdata = nullptr;
 }
 
+/**
+ * check if empty
+ * 
+ * \return 
+ */
 template<class T>
 bool AAVector<T>::empty()
 {
