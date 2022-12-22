@@ -21,7 +21,7 @@ AAVector<T>::AAVector(T item, int n)
 }
 
 template<class T>
-AAVector<T>::AAVector(T* item, int n)
+AAVector<T>::AAVector(iterator item, int n)
 {
 	Capacity = n;
 	Size = n;
@@ -119,7 +119,7 @@ T AAVector<T>::pop_back()
 }
 
 template<class T>
-void AAVector<T>::erase(const T* it)
+void AAVector<T>::erase(const iterator it)
 {
 	if (it >= &Data[0] && it <= &Data[Size - 1]) {
 
@@ -146,7 +146,7 @@ void AAVector<T>::erase(const T* it)
 }
 
 template<class T>
-void AAVector<T>::erase(T* it1, T* it2)
+void AAVector<T>::erase(iterator it1, iterator it2)
 {
 	auto start = min(it1, it2);
 	auto end = max(it1, it2);
@@ -192,7 +192,7 @@ void AAVector<T>::clear()
 }
 
 template<class T>
-void AAVector<T>::insert(T* it, T item)
+void AAVector<T>::insert(iterator it, T item)
 {
 	if (it >= &Data[0] && it <= &Data[Size - 1]) {
 		if (Size >= Capacity) {
