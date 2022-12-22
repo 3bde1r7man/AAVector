@@ -15,7 +15,6 @@
 int main() {
 	int a[6] = {1,2,3,4,5,6};
 	AAVector<int> v (a,3);
-	AAVector<int> v2(a, 3);
 	
 	/*v.push_back(2);
 	v.push_back(3);

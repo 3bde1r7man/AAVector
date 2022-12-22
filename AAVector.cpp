@@ -47,7 +47,7 @@ AAVector<T>::AAVector(T item, int n)
  * \param n
  */
 template<class T>
-AAVector<T>::AAVector(T* item, int n)
+AAVector<T>::AAVector(iterator item, int n)
 {
 	Capacity = n;
 	Size = n;
@@ -188,7 +188,7 @@ T AAVector<T>::pop_back()
  * \param it
  */
 template<class T>
-void AAVector<T>::erase(const T* it)
+void AAVector<T>::erase(const iterator it)
 {
 	if (it >= &Data[0] && it <= &Data[Size - 1]) {
 
@@ -221,7 +221,7 @@ void AAVector<T>::erase(const T* it)
  * \param it2
  */
 template<class T>
-void AAVector<T>::erase(T* it1, T* it2)
+void AAVector<T>::erase(iterator it1, iterator it2)
 {
 	auto start = min(it1, it2);
 	auto end = max(it1, it2);
@@ -277,7 +277,7 @@ void AAVector<T>::clear()
  * \param item
  */
 template<class T>
-void AAVector<T>::insert(T* it, T item)
+void AAVector<T>::insert(iterator it, T item)
 {
 	if (it >= &Data[0] && it <= &Data[Size - 1]) {
 		if (Size >= Capacity) {
@@ -316,7 +316,7 @@ void AAVector<T>::insert(T* it, T item)
  * \return iterator 
  */
 template<class T>
-T* AAVector<T>::begin()
+AAVector<T>::iterator AAVector<T>::begin()
 {
 	return &Data[0];
 }
@@ -327,7 +327,7 @@ T* AAVector<T>::begin()
  * \return iterator
  */
 template<class T>
-T* AAVector<T>::end()
+AAVector<T>::iterator AAVector<T>::end()
 {
 	return &Data[Size];
 }
