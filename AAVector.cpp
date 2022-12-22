@@ -226,13 +226,13 @@ void AAVector<T>::insert(iterator it, T item)
 }
 
 template<class T>
-T* AAVector<T>::begin()
+AAVector<T>::iterator AAVector<T>::begin()
 {
 	return &Data[0];
 }
 
 template<class T>
-T* AAVector<T>::end()
+AAVector<T>::iterator AAVector<T>::end()
 {
 	return &Data[Size];
 }
